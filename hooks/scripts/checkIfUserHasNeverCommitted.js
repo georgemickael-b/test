@@ -14,6 +14,7 @@ function checkRepoPublic() {
         .split('\n');
 
       for (let emailSlug of emailSlugs) {
+        console.log(emailSlug);
         const email = emailSlug.trim().split(' ')[1];
         if (email === `<${currentUserEmail}>`) {
           resolve(true);
