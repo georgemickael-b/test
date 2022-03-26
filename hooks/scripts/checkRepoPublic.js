@@ -1,7 +1,7 @@
 const child = require('child_process');
 var request = require('request');
 
-function checkIfUserHasNeverCommitted() {
+function checkRepoPublic() {
   return new Promise((resolve, reject) => {
     let remoteURL;
     try {
@@ -25,6 +25,7 @@ function checkIfUserHasNeverCommitted() {
         }
       );
     } catch (err) {
+      console.log(err)
       reject({
         msg: 'Cannot determine the remote URL of this repo. Please check if the remote is configured.'
       });
@@ -32,4 +33,4 @@ function checkIfUserHasNeverCommitted() {
   });
 }
 
-module.exports = checkIfUserHasNeverCommitted;
+module.exports = checkRepoPublic;
