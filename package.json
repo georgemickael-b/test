@@ -8,15 +8,10 @@
     "hooks:pre-push": "node ./hooks/pre-push.js",
     "prepare": "husky install"
   },
-  "husky": {
-    "pre-commit": "npm run hooks:pre-commit",
-    "pre-push": "npm run hooks:pre-push"
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "command-line-args": "^5.2.1",
-    "husky": "^7.0.4",
+    "husky": "^7.0.0",
     "request": "^2.88.2"
   },
   "dependencies": {
