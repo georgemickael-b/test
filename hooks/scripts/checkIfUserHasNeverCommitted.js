@@ -1,15 +1,16 @@
 const child = require('child_process');
 
-function checkRepoPublic() {
+function checkRepoPublic(remote) {
   return new Promise((resolve, reject) => {
     try {
+      child.execSync('git fetch --all');
       const currentUserEmail = child
         .execSync('git config user.email')
         .toString()
         .split('\n')[0];
 
       const emailSlugs = child
-        .execSync('git shortlog -se --all --pretty=email')
+        .execSync(`git shortlog -se --all --remotes=${remote} --pretty=email`)
         .toString()
         .split('\n');
 

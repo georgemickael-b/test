@@ -1,12 +1,12 @@
 const child = require('child_process');
 var request = require('request');
 
-function checkRepoPublic() {
+function checkRepoPublic(remote) {
   return new Promise((resolve, reject) => {
     let remoteURL;
     try {
       const res = child
-        .execSync('git config --get remote.origin.url')
+        .execSync(`git config --get remote.${remote}.url`)
         .toString()
         .split('\n');
       if (res.length == 0) throw new Error();

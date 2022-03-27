@@ -2,8 +2,10 @@ const checkRepoPublic = require('./scripts/checkRepoPublic');
 const checkIfUserHasNeverCommitted = require('./scripts/checkIfUserHasNeverCommitted');
 const prompt = require('prompt-sync')();
 
+const remote = process.argv[2];
+
 function prePush() {
-  checkRepoPublic()
+  checkRepoPublic(remote)
     .then((isPublic) => {
       if (isPublic) {
         const response = prompt(
@@ -13,7 +15,7 @@ function prePush() {
       } else {
         console.log('Repository is public');
       }
-      return checkIfUserHasNeverCommitted();
+      return checkIfUserHasNeverCommitted(remote);
     })
     .then((hasUserCommitedBefore) => {
       if (!hasUserCommitedBefore) {

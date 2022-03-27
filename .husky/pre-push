@@ -1,5 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+remote="$1"
 exec < /dev/tty
-npm run hooks:pre-push
+npm run hooks:pre-push $remote
